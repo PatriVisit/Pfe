@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Carte</title>
+	<!-- Leaflet -->
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <script src="js/leaflet.js"></script>
+	<script src='js/Leaflet.LocationShare.js'></script>
+	
+	<!-- Leaflet ruler -->
+	<link rel="stylesheet" href="css/leaflet-ruler.css" />
+    <script src="js/leaflet-ruler.js"></script>
+	<!-- Leaflet fullscreen -->
+	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+
+	<!-- JS of data -->
+	<script type="text/javascript" src="js/chemins_fer.js"></script>
+	<script type="text/javascript" src="js/regions.js"></script>
+	<script type="text/javascript" src="js/routes_nationales.js"></script>
+	<script type="text/javascript" src="js/autoroute.js"></script>
+	<script type="text/javascript" src="js/ligne-tram.js"></script>
+	<script type="text/javascript" src="js/mosque.js"></script>
+	<script type="text/javascript" src="js/station-tram.js"></script>
+
+	<!-- Pour la bare de nav -->
+	
+    <link rel="stylesheet" href="css/barre de navigation map.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300&family=Dancing+Script&display=swap" rel="stylesheet">
+    
+
+	<!-- Mouse Coordinate -->
+	<link rel="stylesheet" href="css/Control.Coordinates.css" />
+    <script src="js/Control.Coordinates.js"></script>
+
+
+	<!-- Theme -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+
+
+	<!-- Location of the user -->
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+	<script src="js/L.Control.Locate.min.js" charset="utf-8"></script>
+
+	<!-- Search bar-->
+
+	<link rel="stylesheet" href="css/Control.Geocoder.css" />
+	<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+	<!-- Turf calcul area-->
+
+	<script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
+
+	<!-- Geocoder  -->
+	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+	<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+	<!-- Leaflet routing machine -->
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+	<!-- Style de la carte -->
+
+	<style>
+		#map {
+			width: 100%;
+			height: 458px;
+		}
+		.info {
+		    padding: 0px;
+		    font: 14px/16px Arial, Helvetica, sans-serif;
+		    background: black;
+		    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+		    border-radius: 5px;
+		}
+		#legende{
+			width:100%;
+			}
+		
+	</style>
+	
+</head>
+<body>
+
+	<section> 
+		<header id="header" class="d-flex align-items-center">
+			<div class="container d-flex align-items-center justify-content-between">
+		
+			  <a id="logo" href="index.html" class="logo mr-auto"><h1>PatriVisit</h1></a>
+		<nav id="navbar" class="navbar">
+			<ul>
+			  <li><a class="nav-link scrollto active" href="index.html"target="_blank">Acceuil</a></li>
+			  <li><a class="nav-link scrollto" href="Lamap.html" target="_blank">Mappe</a></li>
+		  
+			  <li class="dropdown"><a href="#"><span>Villes</span> <i class="bi bi-chevron-down"></i></a>
+				<ul>
+				  <li><a href="Rabat/Rabat.html" target="_blank">Rabat</a></li>
+				  <li class="dropdown"><a href="Essaouira/Essaouira.html"><span>Essaouira</span> <i class="bi bi-chevron-right"></i></a>
+				  </li>
+				</ul>
+			  </li>
+			  <li><a class="nav-link scrollto" href="index.html">Contact</a></li>
+			</ul>
+			<i class="bi bi-list mobile-nav-toggle"></i>
+		  </nav><!-- .navbar -->     
+		</div>
+	</header>
+	<!-- End Header -->       
+</section>	
+
+<section>
+<div id='map'></div>
+
+<script type="text/javascript">
+   var map = L.map('map').setView([31.5140, -9.7690], 5.5)
+	
+   map.addControl(new L.Control.Fullscreen());
+
+		window.onload=function(){
+            console.log('page chargée');
+
+			var redIcon = new L.Icon({
+  			iconUrl: 'images/marker-icon-2x-red.png',
+  			shadowUrl: 'images/marker-shadow.png',
+  			iconSize: [25, 41],
+  			iconAnchor: [12, 41],
+  			popupAnchor: [1, -34],
+  			shadowSize: [41, 41]
+			});
+		
+
+			var marker = L.marker([34.007016739204474, -6.848212943099647], {icon: redIcon}).addTo(map);
+            	marker.bindPopup('Cliquez sur <a href="Rabat/Babkech.html">Bab Marrakech <br> </a> pour afficher la viste virtuelle.').openPopup();
+
+			var marker = L.marker([31.5158, -9.7670]).addTo(map);
+            	marker.bindPopup(' Cliquez sur <a href="https://webobook.com/public/61520aae51650077f0128ce2,en?ap=true&si=true&sm=false&sp=true&sfr=false&sl=false&sop=false&" target="_blank"> <br> pour visiter LMellah </a>');
+
+			var marker = L.marker([31.513329, -9.766389],).addTo(map);
+            	marker.bindPopup(' Cliquez sur <a href="https://webobook.com/public/61262ac49864597e6658b0a2,en?ap=false&si=false&sm=false&sp=true&sfr=false&sl=false&sop=false&" target="_blank"> <br> pour visiter Chbanat </a>');
+
+
+			var polygon = L.polygon([
+					[31.514116,-9.768203],
+    				[31.514847,-9.769045],
+    				[31.5158,-9.767678],
+					[31.516095,-9.767692],
+					[31.516766,-9.765946],
+					[31.516187,-9.765694],
+					[31.516023,-9.765770],
+					[31.516021,-9.765849],
+					[31.516058,-9.765947]		
+					]).addTo(map);
+			
+
+
+			var polygon = L.polygon([
+					[31.514117, -9.768205],
+    				[31.514515, -9.767750],
+    				[31.514231, -9.767452],
+					[31.514075, -9.767141],
+					[31.513951, -9.766563],
+					[31.513883, -9.766495],
+					[31.513860, -9.766237],
+					[31.513778, -9.765870],
+					[31.513872, -9.765144],
+					[31.512639, -9.764636],
+					[31.511794, -9.765754]
+
+			]).addTo(map);
+			
+         		
+				
+
+ /*************tracer l'itinéraire *******************/
+
+			L.Routing.control({
+				geocoder: L.Control.Geocoder.nominatim()
+			}).addTo(map)
+		}
+	
+ /*************règle *******************/
+		L.control.ruler().addTo(map);
+
+
+		
+	function Monstyle(feature) {
+		return {
+			weight: 2,
+			opacity: 1,
+			color: 'red',
+			dashArray: '3',
+			fillOpacity: 0.7,
+			fillColor: '#ff2f52'
+		};
+	}
+
+	function highlightFeature(e) {
+	    var layer = e.target;
+
+	    layer.setStyle({
+	        weight: 5,
+	        color: '#666',
+	        dashArray: '',
+	        fillOpacity: 0.7
+	    });
+
+	    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+	        layer.bringToFront();
+	    }
+	        info.update(layer.feature.properties);
+
+	}
+
+	function resetHighlight(e) {
+    	geojson.resetStyle(e.target);
+    	    info.update();
+
+	}
+	function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+	function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+
+
+/****************************Couche GeoJSON****************************/
+
+var info = L.control();
+
+
+	var geojson1 = L.geoJson(region, {
+		style: Monstyle,
+	    onEachFeature:  function (feature, layer) {
+			area = (turf.area(feature) / 1000000).toFixed(2);
+			layer.bindPopup(`<b>Area: </b> ${area}`)
+        }
+
+});
+	var geojson2 = L.geoJson(cheminfer, {
+		style: Monstyle,
+	    onEachFeature: onEachFeature,
+});
+	var geojson3 = L.geoJson(routesnatio, {
+		style: Monstyle,
+	    onEachFeature: onEachFeature,
+});
+	var geojson4 = L.geoJson(autoroute, {
+		style: Monstyle,
+	    onEachFeature: onEachFeature,
+});
+	var geojson5 = L.geoJson(ligne, {
+		style: Monstyle,
+	    onEachFeature: onEachFeature,
+});
+	var geojson6 = L.geoJson(stations, {
+		style: Monstyle,
+	    onEachFeature: onEachFeature,
+});
+
+
+
+/*******************Carte****************************************/
+
+	var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    	minZoom: -1,
+		maxZoom: 40,
+    	subdomains:['mt0','mt1','mt2','mt3']
+}).addTo(map);
+
+	var OpenStreetMap_DE = L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+		minZoom: -1,
+		maxZoom: 40,
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);;
+
+	
+
+
+/**********************Controle layer*******************/
+    var baseMaps = {    
+	"Satellite" : googleSat,
+	"OpenStreetMap_DE": OpenStreetMap_DE,  
+};
+	
+	var overlayMaps = {
+	
+    "Régions": geojson1,
+    "Chemins de fer": geojson2,
+    "Réseaux hydrographique": geojson3,
+	"Autoroutes": geojson4,
+	"Lignes de tram": geojson5,
+	"Stations de tram": geojson6
+};
+
+
+/**********************Controle layer*******************/
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+/**********************Mouse coordinate ******************/
+var c = new L.Control.Coordinates(); 
+
+	c.addTo(map);
+
+	map.on('click', function(e) {
+		c.setCoordinates(e);
+	});
+
+/********************** Location of the user******************/
+
+L.control.locate().addTo(map);
+
+/**********************Search bar******************/
+
+L.Control.geocoder().addTo(map);
+
+</script>
+<div>
+	<img id="legende" src="images/Légende.png" alt="Légende">
+</div>
+</section>
+
+
+</body>
+</html>
