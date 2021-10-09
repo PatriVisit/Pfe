@@ -117,31 +117,92 @@
 <div id='map'></div>
 
 <script type="text/javascript">
-   var map = L.map('map').setView([31.5140, -9.7690], 5.5)
+   var map = L.map('map').setView([34.007016739204474, -6.8482129430996470], 20)
 	
    map.addControl(new L.Control.Fullscreen());
 
 		window.onload=function(){
             console.log('page chargée');
 
-			var redIcon = new L.Icon({
-  			iconUrl: 'images/marker-icon-2x-red.png',
-  			shadowUrl: 'images/marker-shadow.png',
-  			iconSize: [25, 41],
-  			iconAnchor: [12, 41],
-  			popupAnchor: [1, -34],
-  			shadowSize: [41, 41]
+			var mosque = new L.Icon({
+  			iconUrl: 'icon/mosque.png',
+  			iconSize: [45, 40],
 			});
-		
+			var mur = new L.Icon({
+  			iconUrl: 'icon/mur.png',
+  			iconSize: [45, 40],
+			});
+			var bab = new L.Icon({
+  			iconUrl: 'icon/bab.png',
+  			iconSize: [45, 40],
+			});
 
-			var marker = L.marker([34.007016739204474, -6.848212943099647], {icon: redIcon}).addTo(map);
-            	marker.bindPopup('Cliquez sur <a href="Rabat/Babkech.html">Bab Marrakech <br> </a> pour afficher la viste virtuelle.').openPopup();
 
-			var marker = L.marker([31.5158, -9.7670]).addTo(map);
+			var marker = L.marker([34.007016739204474, -6.848212943099647], {icon: bab}).addTo(map);
+            	marker.bindPopup('<center> <strong> Bab Marrakech</strong> est une porte située à l"Agdal sur la place du même nom, place Bab Marrakech, à la capitale Rabat.<br> Cette porte date de la dynastie Alaouites quand, au début du XIXe siècle, cette dérnière a élevé une muraille extérieure d’une longueur totale de 4.3 Km . <br> Cette muraille a été constituée de quatre portes : Bab EL Qebibât, Bab Marrakech, Bab el-Mssala et Bab temara ou Bab Tamesna. <br> Pour visiter Bab Marrakech <a href="Rabat/Babkech.html">Cliquez ici </a> <br> <img src="images/babkech.jpeg"/></center>').openPopup();
+
+			var marker = L.marker([31.5158, -9.7670], {icon: mur}).addTo(map);
             	marker.bindPopup(' Cliquez sur <a href="https://webobook.com/public/61520aae51650077f0128ce2,en?ap=true&si=true&sm=false&sp=true&sfr=false&sl=false&sop=false&" target="_blank"> <br> pour visiter LMellah </a>');
 
-			var marker = L.marker([31.513329, -9.766389],).addTo(map);
+			var marker = L.marker([31.513329, -9.766389],{icon: mur}).addTo(map);
             	marker.bindPopup(' Cliquez sur <a href="https://webobook.com/public/61262ac49864597e6658b0a2,en?ap=false&si=false&sm=false&sp=true&sfr=false&sl=false&sop=false&" target="_blank"> <br> pour visiter Chbanat </a>');
+
+			var marker = L.marker([33.582778 , -7.615833], {icon: mosque}).addTo(map);
+            	marker.bindPopup('<center> <strong> Église Notre Dame-de Lourdes </strong> située à Casablanca<br> C"est une église paroissiale catholique contruite en 1954 par Achille Dangleterre et l"ingénieur Gaston Zimmer<br> <br> <img src="images/eglise.jpg"/></center>');
+
+			var marker = L.marker([33.608749 , -7.632601], {icon: mosque}).addTo(map);
+            	marker.bindPopup('<center> <strong> Mosqué Hassan II </strong> est située à Casablanca <br> Elle est sur le bord de la mer. Sa construction a débuté  en 1986 et son inauguration a eu lieu en 1993. La mosquée Hassan II est d"une hauteur de 210 mètres  et comporte au delà d"une très grande salle de prières, une école coranique, un musée, une bibliothèque, salle d’ablutions et des bains. <br> <br> <img src="images/mosqué hassan2.jpg"/></center>');
+
+			var marker = L.marker([34.061111 , -4.977778], {icon: mur}).addTo(map);
+            	marker.bindPopup('<center> <strong> L"ancienne médina de Fès </strong> est une médina marocaine, cœur historique de Fès, inscrite depuis 1981 au patrimoine mondial de l"Unesco.<br>Fès el-Bali est le plus vieux de ses quartiers. <br> <img src="images/mosqué hassan2.jpg"/></center>');
+
+			var marker = L.marker([34.062222 , - 4.982778], {icon: mosque}).addTo(map);
+            	marker.bindPopup('<center> <strong> La Médersa Bou Inania en arabe المدرسة أبو عنانية بفاس</strong> <br> Pas loin du Bab Boujloud, elle est édifié entre 1350 et 1355 sous la dynastie des Mérinides.<br> <br> <img src="images/MedersaBouInania.jpg"/></center>');
+
+			var marker = L.marker([33.880556, -5.557500], {icon: mur}).addTo(map);
+            	marker.bindPopup('<center> <strong> Hri Souani</strong> <br> c"est monument historique situé à Meknès qui servait principalement à stocker les denrées alimentaires. Il a été construit par Moulay Ismaïl au 18ème siècle.<br> <br> <img src="images/hrisouani.jpg"/></center>');
+
+			var marker = L.marker([33.891111,-5.564722], {icon: mur}).addTo(map);
+            	marker.bindPopup('<center> <strong> La prison de Qara</strong> <br> est une vaste prison souterraine qui s"étend sur des kilomètres. Elle a été construite au 18ème siècle sous le règne du sultan Ismaïl dans la ville de Meknès, à l"intérieur de la kasbah ismaélienne.<br> Son nom lui vient d"un prisonnier portugais qui a racheté sa liberté au sultan en échange de la construction de la prison.<br> <img src="images/quara.jpg"/></center>');
+
+			var marker = L.marker([32.015278, -6.719722], {icon: bab}).addTo(map);
+            	marker.bindPopup('<center> <strong> Les cascades d"Ouzoud</strong> <br> sont des chutes spectaculaire située dans la régions de Beni Mellal-Khénifra d"environ 110 m de haut. <br> Ces chutes sont considérées parmi les plus élevées et les plus belles du Maroc,souvent dominées par un arc-en-ciel.<br> Ce site, touristique, calme et naturel, propose de nombreux campings, lieux de baignade, petits restaurants en terrasse de cuisine berbère et boutiques d"artisanat marocain du moyen Atlas le long d"un passage piéton qui descend au pied de la cascade.<br> Une communauté de macaques berbères en liberté, habitués au tourisme, assurent une partie de l"animation du site.<br> <img src="images/ouzoud.jpg"/></center>');
+			var marker = L.marker([31.047220, -7.128890], {icon: mur}).addTo(map);
+            	marker.bindPopup('<center> <strong> Ait Benhaddou </strong> <br> Situé dans le sud du maroc dans la province de Ouarzazat, est un site culturel et historique marocain.<br> Il est le plus célèbre  des ksour de la vallé de l"Ounila et est un exemple frappant de l"architecture du sud du maroc.<br> <img src="images/aitben.jpg"/></center>');
+
+			var marker = L.marker([34.073890, -5.556940], {icon: bab}).addTo(map);
+            	marker.bindPopup('<center> <strong> Volubilis</strong> <br> Partiellement découverte de nos jours,un avant-poste important de l"Empire romain et a été ornée de nombreux beaux monuments.<br> Etalée sur 42 hectares, ses vestiges archéologiques  témoignent de plusieurs civilisations.<br>Volubilis est d"une importance exceptionnelle en ce qu"elle montre le développement urbain et la romanisation aux frontières de l"empire romain. <br><br><img src="images/Volubilis.jpg"/></center>');
+
+			var marker = L.marker([35.570830, -5.366670], {icon: mur}).addTo(map);
+            	marker.bindPopup('<center> <strong> Médina de Tetouan </strong> <br> Ancienement appelée "Titawin".Elle est l"une des plus petites médinas marocaines et son architecture est influencée par l"art andalous.<br> Tétouan a eu une importance particulière durant la période islamique comme principal point de jonction entre le Maroc et l"Andalousie.<br><br><img src="images/tetouan.jpg"/></center>');
+
+			var marker = L.marker([35.168611,-5.261389], {icon: mosque}).addTo(map);
+            	marker.bindPopup('<center> <strong> La Kasbah de Chefchaouen </strong> <br> est construite au 15ème siècle par Rachid Ben Ali. Elle contient aujourd"hui un musée ethnologique. Cette majustueuse kasbah est caractérisé par sa tour donnant sur des vues panoramiques de la ville.<br><br><img src="images/chefchaouen.jpg"/></center>');
+
+			var marker = L.marker([31.624444,-7.993056], {icon: mosque}).addTo(map);
+            	marker.bindPopup('<center> <strong>Koutoubia </strong> <br> est la plus grande mosquée de la ville construite au 12ème siècle à Marrakech.   Son architecture et son décor ascétique reflètent l"art des Almohades.<br><br><img src="images/koutoubia.jpg"/></center>');
+
+			var marker = L.marker([31.621389,-7.981667], {icon: mosque}).addTo(map);
+            	marker.bindPopup('<center> <strong> Ksar l Bahia </strong> <br> est un ancien palais du 19ème siècle de huit hectares de style islamique,situé à  Marrakech. Actuellement, ksar l Bahia est un musée , un des chefs-d"oeuvre de l"architecture marocaine et un des monuments touristique et culturel du pays.<br><br><img src="images/bahia.jpg"/></center>');
+
+			var marker = L.marker([31.625833,-7.989167], {icon: mur}).addTo(map);
+            	marker.bindPopup('<center> <strong> Jamaa El Fena </strong> <br> est une célèbre place publique à la médina de Marrakech au Maroc. Elle est populaire et  animée surtout la nuit et attire des millions de visiteurs chaque année.  <br>« L"espace culturel de la place Jemaa el-Fna » est inscrit patrimoine culturel immatériel depuis 2008 et au patrimoine mondial depuis 1985 par l"Unesco2.<br><br><img src="images/fna.jpeg"/></center>');
+
+			var marker = L.marker([34.006667,-6.820278], {icon: mur}).addTo(map);
+            	marker.bindPopup('<center> <strong> Chellah</strong>');
+
+			var marker = L.marker([34.031944,-6.836111], {icon: bab}).addTo(map);
+            	marker.bindPopup('<center> <strong> Oudaya </strong> <br> La kasbah des Oudayas est un ancien camp militaire fortifié situé à Rabat et bâti au 12ème siècle.<br>Depuis 2012, la kasbah est inscrite sur la liste du patrimoine mondial de l"Unesco <br><br><img src="images/Rabat.png"/></center>');
+
+			var marker = L.marker([34.040000,-6.827222], {icon: mosque}).addTo(map);
+            	marker.bindPopup('<center> <strong> Médersa mérinide de Salé </strong> <br>  est une ancienne médersa bâtie dans la ville de Salé,. Elle fut édifiée entre 1333 et 1341 par le sultan Abu al-Hasan ben Uthman  sous la dynastie des Mérinides.<br><br><img src="images/sale.jpg"/></center>');
+
+			var marker = L.marker([35.079602, -2.214755], {icon: bab}).addTo(map);
+            	marker.bindPopup('<center> <strong> La kasbah de Saidia </strong> <br> est situé dans la ville de Saidia, surnomée perle bleu, au Maroc.<br> Elle a été construite,en forme de carré de 100 mètres de côte environ, en 1883.</center>');
+
+			var marker = L.marker([31.308095, -4.250765], {icon: mosque}).addTo(map);
+            	marker.bindPopup('<center> <strong> Ksar El Faidha </strong> <br> fut le premier palais des rois alaouites à Risani.<br> Ksar el Faidha est actuellement un musée.<br><br><img src="images/rissani.jpeg"/></center>');
+
 
 
 			var polygon = L.polygon([
